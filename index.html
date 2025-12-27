@@ -4,21 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minimal Text</title>
+  <!-- Absolute CDN links -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+  
   <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+  {
+    "imports": {
+      "react": "https://esm.sh/react@19.0.0",
+      "react-dom": "https://esm.sh/react-dom@19.0.0",
+      "react-dom/client": "https://esm.sh/react-dom@19.0.0/client"
+    }
   }
-}
-</script>
+  </script>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -31,5 +33,32 @@
 </head>
 <body>
   <div id="root"></div>
+
+  <!-- Consolidated React/TSX Logic -->
+  <script type="text/babel" data-type="module">
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+
+    const App = () => {
+      return (
+        <main className="flex h-screen w-screen items-center justify-center bg-white">
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-800 select-none">
+            Centering
+          </h1>
+        </main>
+      );
+    };
+
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      // Single initialization point to avoid "already passed to createRoot" error
+      const root = createRoot(rootElement);
+      root.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+    }
+  </script>
 </body>
 </html>

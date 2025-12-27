@@ -1,0 +1,5 @@
+{
+  "name": "Zen Echo",
+  "description": "A minimalist application that displays a single, beautifully centered thought or greeting, designed for focus and simplicity.",
+  "requestFramePermissions": []
+}
